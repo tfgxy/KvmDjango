@@ -44,7 +44,14 @@ def login(request):
     if request.method == "POST":
         user = request.POST.get('user')
         password = request.POST.get('password')
-        readvalue = UserPassword.objects.all()
+        u=UserPassword.objects.filter(user=user)
+        p=UserPassword.objects.filter(user=user).filter(password=password)
+        if not u:
+            return HttpResponse("没有此用户!")
+        elif p == password:
+            return render(request, 'test.html')
+        else:
+            return HttpResponse("密码错误!")
         return render(request, 'login.html')
     else:
         return render(request, 'login.html')
@@ -54,8 +61,8 @@ def login(request):
 def home(request):
     user = "tfg"
     u = UserPassword.objects.filter(user=user)
-    u2=UserPassword.objects.filter(user="erhgareg2424")
-    if u2 is None:
+    u2=UserPassword.objects.filter(user="afbab")
+    if not u2:
         u3="no"
     else:
         u3="yes"
