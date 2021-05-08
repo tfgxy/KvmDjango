@@ -23,5 +23,8 @@ urlpatterns = [
     # path('results/',views.results,name="results"),
     path('cal/',views.cal),
     path('calpage/', views.calpage),
-    path('zc/',views.userpassword1,name="UserPassword1")
+    path('zc/',views.userpassword,name="UserPassword"),
+    path('successful/',views.successful),
+    path('login/', views.login),
+    path('home/', views.home)
 ]
